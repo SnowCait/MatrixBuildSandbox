@@ -9,6 +9,7 @@ jobs:
         with:
           dotnet-version: '3.0.100'
       - run: dotnet --info
+      - run: ls -l /Users/runner/hostedtoolcache/dncs/3.0.100/x64/sdk
       - run: dotnet build --configuration Release
       - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
         env:
