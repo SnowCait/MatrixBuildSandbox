@@ -13,6 +13,8 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet --info
+      - run: export PATH="$PATH:$HOME/.dotnet/tools"
+      - run: export DOTNET_ROOT=$DOTNET_ROOT/${{ matrix.dotnet }}/x64/
       - run: echo $DOTNET_ROOT
       - run: dotnet build --configuration Release
 #      - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
