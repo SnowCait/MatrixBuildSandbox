@@ -14,7 +14,7 @@ jobs:
       - run: dotnet build --configuration Release
       - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
         env:
-          DOTNET_ROOT: /Users/runner/hostedtoolcache/dncs/3.0.100/x64/sdk
+          DOTNET_ROOT: /Users/runner/hostedtoolcache/dncs
       - uses: actions/upload-artifact@master
         with:
           name: release-build
