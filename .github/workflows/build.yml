@@ -2,7 +2,10 @@ name: dotnetcore build
 on: push
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-dotnet@v1
@@ -10,11 +13,8 @@ jobs:
           dotnet-version: '3.0.100'
       - run: dotnet --info
       - run: echo $DOTNET_ROOT
-      - run: ls -l /Users/runner/hostedtoolcache/dncs/3.0.100/x64/sdk/3.0.100
       - run: dotnet build --configuration Release
-      - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
-        env:
-          DOTNET_ROOT: /Users/runner/hostedtoolcache/dncs
+#      - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
       - uses: actions/upload-artifact@master
         with:
           name: release-build
