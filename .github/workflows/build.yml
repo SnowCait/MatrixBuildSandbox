@@ -15,7 +15,7 @@ jobs:
       - run: dotnet --info
       - run: dotnet build --configuration Release
       - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
-      - uses: actions/upload-artifact@master
+      - uses: actions/upload-artifact@v1
         with:
           name: release-build
           path: ./MatrixBuildSandbox/bin/Release/netcoreapp3.0/
