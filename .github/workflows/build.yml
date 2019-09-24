@@ -9,15 +9,12 @@ jobs:
         dotnet: [ 3.0.100, 3.0.100-rc1-014190 ]
     steps:
       - uses: actions/checkout@master
-      - uses: actions/setup-dotnet@v1
+      - uses: actions/setup-dotnet@v1.0.2
         with:
           dotnet-version: ${{ matrix.dotnet }}
       - run: dotnet --info
-      - run: export PATH="$PATH:$HOME/.dotnet/tools"
-      - run: export DOTNET_ROOT=$DOTNET_ROOT/${{ matrix.dotnet }}/x64/
-      - run: echo $DOTNET_ROOT
       - run: dotnet build --configuration Release
-#      - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
+      - run: dotnet run --configuration Release --project ./MatrixBuildSandbox/
       - uses: actions/upload-artifact@master
         with:
           name: release-build
